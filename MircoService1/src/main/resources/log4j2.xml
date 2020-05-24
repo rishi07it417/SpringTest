@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>
+		<Property name="LOG_PATTERN">
+			%d{MM-dd-yyyy HH:mm:ss} %-5p %c{3}:%L - %m%n
+		</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+
+		<!-- Rolling File Appender -->
+		<RollingFile name="FileAppender" fileName="logs/archwell_reprocessing.log" 
+			filePattern="logs/$${date:yyyy-MM}/pl-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>${LOG_PATTERN}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="3" />
+		</RollingFile>
+	</Appenders>
+
+
+	<Loggers>
+		<!-- application -->
+		<Logger name="com.fm" level="debug" additivity="false">
+			<AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="FileAppender" />
+		</Logger>
+		
+		<!-- hiberate -->
+		<Logger name="org.hibernate.SQL" level="info" additivity="false">
+			<!-- <AppenderRef ref="ConsoleAppender" /> -->
+			<AppenderRef ref="FileAppender" />
+		</Logger>
+		
+		<Logger name="org.hibernate.type.descriptor.sql" level="info" additivity="false">
+			<!-- <AppenderRef ref="ConsoleAppender" /> -->
+			<AppenderRef ref="FileAppender" />
+		</Logger>
+		
+		<Logger name="org.hibernate.stat" level="debug" additivity="false">
+			<!-- <AppenderRef ref="ConsoleAppender" /> -->
+			<AppenderRef ref="FileAppender" />
+		</Logger>
+
+		<Root level="info">
+			<AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="FileAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
+
