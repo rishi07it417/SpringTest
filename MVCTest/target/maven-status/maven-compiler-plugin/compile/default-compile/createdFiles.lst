@@ -1,0 +1,7 @@
+com\test\demo\practice\AppConfig.class
+com\test\demo\repository\UniMasterRepository.class
+com\test\demo\service\UniMasterUpdateServiceImpl.class
+com\test\demo\service\UniMasterServiceImpl.class
+com\test\demo\practice\controller\AddController.class
+com\test\demo\repository\entity\UniMaster.class
+com\test\demo\practice\App.class
