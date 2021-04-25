@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<server>	
-	<webApplication contextRoot="/archwellreprocessing" id="ArchwellReprocessingService" location="${server.config.dir}/apps/ArchwellReprocessingService.war" name="ArchwellReprocessingService">
-	</webApplication>
-</server>
